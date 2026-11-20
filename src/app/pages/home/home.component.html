@@ -1,0 +1,16 @@
+<div class="page">
+    <div class="card">
+        <h2>Home</h2>
+        <p class="muted">Welcome, <strong>{{ auth.currentUser?.username }}</strong></p>
+        <span class="badge" [class.badge-admin]="auth.hasRole('admin')" [class.badge-member]="auth.hasRole('member')">
+            {{ auth.currentUser?.role }}
+        </span>
+
+        <div class="actions">
+            @if (auth.hasRole('admin')) {
+            <a routerLink="/summary" class="btn btn-primary">View Summary</a>
+            }
+            <button class="btn btn-danger" (click)="auth.logout()">Logout</button>
+        </div>
+    </div>
+</div>

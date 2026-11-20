@@ -1,0 +1,36 @@
+<div class="page">
+    <div class="card wide">
+        <h2>Visit Summary</h2>
+        <p class="muted">Page visits of member users</p>
+
+        <div class="actions">
+            <a routerLink="/home" class="btn btn-outline">Back to Home</a>
+            <button class="btn btn-danger" (click)="auth.logout()">Logout</button>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>User</th>
+                    <th>Visit Count</th>
+                    <th>Visit Times</th>
+                </tr>
+                @for (row of summary; track row.username) {
+                <tr>
+                    <td>{{ row.username }}</td>
+                    <td>{{ row.count }}</td>
+                    <td>
+                        @for (t of row.times; track $index) {
+                        <span class="chip">{{ t | date: 'medium' }}</span>
+                        }
+                    </td>
+                </tr>
+                } @empty {
+                <tr>
+                    <td colspan="3">No visits yet</td>
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

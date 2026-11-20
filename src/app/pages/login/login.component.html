@@ -1,0 +1,14 @@
+<div class="page">
+    <div class="card">
+        <h2>Login</h2>
+        <p class="muted">Sign in to continue</p>
+
+        <input [(ngModel)]="username" placeholder="Username" />
+        <input [(ngModel)]="password" type="password" placeholder="Password" (keyup.enter)="onLogin()" />
+        <button class="btn btn-primary btn-block" (click)="onLogin()">Login</button>
+
+        @if (error) {
+        <p class="error">{{ error }}</p>
+        }
+    </div>
+</div>
